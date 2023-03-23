@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 export default function Home() {
   const [promptInput, setPromptInput] = useState("");
   const [result, setResult] = useState();
+
   let showdeploy = false;
 
   async function onSubmit(event) {
@@ -39,8 +40,10 @@ export default function Home() {
     console.log("running");
     // Replace the values with your own keys and endpoint
     const apiUrl = "https://intuneremoteassistanceopenaitest.openai.azure.com/openai/deployments/TestDavinciDeployment/completions?api-version=2022-12-01";
-    const apiKey = "56c4416636d5458ba37a66cac8cf1fea";
-    
+    //Add your key here
+    const apiKey = "";
+
+
     var requestBody;
     if(promptInput.startsWith("How many devices are non-compliant")) {
       console.log("how many");
@@ -70,7 +73,7 @@ export default function Home() {
     }
       if(promptInput.startsWith("What is the top reason for non-compliance")) {
         console.log("what is")
-      
+
         requestBody = {
           "prompt": "In the following JSON schema,Order by NumberOfNonCompliantDevices descending and get only top 1 value.\\ Generate output as {\"NumberOfNonCompliantDevices\": 2, \"NumberOfCompliantDevices\": 1, \"SettingName\": \"name\" } \\###\\{\"TotalRowCount\":16,\"Schema\":[{\"Column\":\"SettingId\",\"PropertyType\":\"String\"},{\"Column\":\"SettingName\",\"PropertyType\":\"String\"},{\"Column\":\"PolicyPlatformType\",\"PropertyType\":\"Int32\"},{\"Column\":\"PolicyPlatform\",\"PropertyType\":\"String\"},{\"Column\":\"NumberOfCompliantDevices\",\"PropertyType\":\"Int64\"},{\"Column\":\"NumberOfNonCompliantDevices\",\"PropertyType\":\"Int64\"},{\"Column\":\"NumberOfNotEvaluatedDevices\",\"PropertyType\":\"Int64\"},{\"Column\":\"NumberOfNotApplicableDevices\",\"PropertyType\":\"Int64\"},{\"Column\":\"NumberOfConflictDevices\",\"PropertyType\":\"Int64\"}],\"Values\":[[\"b592199d-be2f-45dd-b4da-baa7345dcac5\",\"Windows10CompliancePolicy.BitLockerEnabled\",6,\"Windows10AndLater\",0,10,0,1,0],[\"fb3adfee-7fac-cdb5-23c4-eeb8efb67578\",\"Windows10CompliancePolicy.DeviceThreatProtectionRequiredSecurityLevel\",6,\"Windows10AndLater\",3,1,0,0,0],[\"703c9045-8646-f541-378e-9bd4e73a7118\",\"Windows10CompliancePolicy.OsMinimumVersion\",6,\"Windows10AndLater\",0,1,0,0,0]]}###\\",
           "temperature": 1,
@@ -97,9 +100,9 @@ export default function Home() {
         showdeploy = true;
         //document.getElementById('deploy').style.visibility = 'visible';
       }
-      
-    
-    
+
+
+
 
 
     const requestOptions = {
@@ -127,7 +130,7 @@ export default function Home() {
   async function deploy_click(event){
     //Harsh, add the graph call here
   }
-  
+
   return (
     <div>
       <Head>
@@ -145,6 +148,7 @@ export default function Home() {
           value={promptInput}
           onChange={(e) => setPromptInput(e.target.value)}>
           </textarea>
+          <input id="submit2" type="submit"/>
           <input id="submit2" type="submit"/>
         </form>
         <textarea

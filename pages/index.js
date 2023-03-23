@@ -39,7 +39,9 @@ export default function Home() {
     console.log("running");
     // Replace the values with your own keys and endpoint
     const apiUrl = "https://intuneremoteassistanceopenaitest.openai.azure.com/openai/deployments/TestDavinciDeployment/completions?api-version=2022-12-01";
+    //Add your key here
     const apiKey = "";
+
 
     var requestBody;
     if(promptInput.startsWith("How many devices are non-compliant")) {

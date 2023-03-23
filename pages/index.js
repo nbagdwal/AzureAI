@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 export default function Home() {
   const [promptInput, setPromptInput] = useState("");
   const [result, setResult] = useState();
+
   let showdeploy = false;
 
   async function onSubmit(event) {
@@ -147,6 +148,7 @@ export default function Home() {
           value={promptInput}
           onChange={(e) => setPromptInput(e.target.value)}>
           </textarea>
+          <input id="submit2" type="submit"/>
           <input id="submit2" type="submit"/>
         </form>
         <textarea
